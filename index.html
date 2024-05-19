@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <!-- Background styling -->
+   <div class="background"></div>
   <style>
     .background {
       background-color: lightgray;
@@ -27,6 +27,7 @@
     <div class="container">
       <marquee behavior="scroll" direction="left"> <h1>Welcome to my Online CV Portal</h1> </marquee></div>
       <img src="pic.jpeg" alt="photo.png" class="rounded-circle" style="width: 150px; height: 150px;">
+   
   </header></center> 
 
   <main class="container">
@@ -94,7 +95,7 @@
         <h2>Leave me a message</h2>
       </div>
       <div class="card-body">
-        <form action="/submit" method="post">
+        <form id="contactForm" action="/submit" method="post" onsubmit="return validateForm()">
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name" name="name" required>
@@ -107,12 +108,25 @@
             <label for="message">Message:</label>
             <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
           </div>
-         
           <button type="submit" class="btn btn-primary">Send</button>
         </form>
       </div>
     </div>
   </aside>
+
+  <script>
+    function validateForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var message = document.getElementById("message").value;
+
+      if (name == "" || email == "" || message == "") {
+        alert("All fields must be filled out");
+        return false;
+      }
+      return true;
+    }
+  </script>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
